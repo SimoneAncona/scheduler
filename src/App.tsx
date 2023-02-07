@@ -1,8 +1,8 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
+import axios from "axios"
 import './App.css'
 import Scheduler from './components/Scheduler'
-import { PRIMARY_COLOR, SECONDARY_COLOR, ACCENT_COLOR, CELL_ACCENT_COLOR, CELL_PRIMARY_COLOR, CELL_SECONDATY_COLOR } from './Settings'
+import { PRIMARY_COLOR, SECONDARY_COLOR, ACCENT_COLOR, CELL_ACCENT_COLOR, CELL_PRIMARY_COLOR, CELL_SECONDATY_COLOR, HTTP_URL, TEACHER_REQ, COURSE_REQ } from './Settings'
 import { Subject, Teacher } from './Interfaces'
 
 type HourData = {
@@ -27,6 +27,16 @@ function App() {
       }
     }
   )
+
+  axios.post(HTTP_URL, {
+    name : TEACHER_REQ,
+    argv : [1, "2023-01-12"]
+  }).then( data => console.log(data) )
+
+  axios.post(HTTP_URL, {
+    name : COURSE_REQ,
+    argv : [1, "AT", "2023-01-12"]
+  }).then( data => console.log(data) )
 
   return (
     <Scheduler 

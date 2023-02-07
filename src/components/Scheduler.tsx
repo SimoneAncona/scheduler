@@ -5,7 +5,6 @@ import { Subject, Teacher } from "../Interfaces"
 type HEXColorString  = string
 type RGBColorString  = string | [ number, number, number ]
 type RGBAColorString = string | [ number, number, number, number ]
-type AnyKindOfColor  = HEXColorString | RGBAColorString | RGBAColorString
 
 type HourData = {
     day      : number
