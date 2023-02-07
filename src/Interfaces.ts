@@ -1,60 +1,45 @@
-enum Week {
-    Monday = 0,
-    Tuesday,
-    Wednesday,
-    Thursday,
-    Friday,
-    Saturday,
-    Sunday,
-  }
-  
-  interface GUser {
-      id       : Number,
-      Password : String,
-      Email    : String,
-        Admin    : Boolean
-  }
-  
-  interface Teacher {
+
+
+interface Teacher {
     TeacherID: number;
     Name: string;
     Surname: string;
     SubstitutionDone: number;
     Courses: Course[];
-  }
+}
   
-  interface Absence {
+interface Absence {
     Day: number;
     Hour: number;
     SubjectName: String;
     CourseYear: number;
     CourseSection: String;
     Substitution: {
-      Mode: string;
+        Mode: string;
     };
     Teacher: {
-      Name: String;
-      Surname: String;
+        Name: String;
+        Surname: String;
     };
-  }
+}
   
-  interface Substitution {
+interface Substitution {
     SubstitutionID: number;
     IsPosponedEntryOrEarlyExit: boolean;
     TeacherID: number;
-  }
+}
   
-  interface Course {
+interface Course {
     Section: string;
     Year: number;
     IsSubsidiary: boolean;
-  }
+}
   
-  interface Subject {
+interface Subject {
     Name: string;
-  }
+}
   
-  interface Teaching {
+interface Teaching {
     TeachingID: number;
     Hour: number;
     Day: number;
@@ -62,42 +47,50 @@ enum Week {
     SubjectName: string;
     CourseSection: number;
     CourseYear: number;
-  }
+}
   
-  interface DBRequest {
+interface DBRequest {
     name: string;
     args?: any[];
-  }
+}
   
-  type AbsenceCardProps = {
-    ID            : number,
-    StartingTime  : string,
-    EndingTime    : string,
-    Day           : number, 
-    Hour          : number, 
-    SubjectName   : string, 
-    CourseYear    : number, 
-    CourseSection : string,
+type AbsenceCardProps = {
+    ID            : number
+    StartingTime  : string
+    EndingTime    : string
+    Day           : number 
+    Hour          : number 
+    SubjectName   : string 
+    CourseYear    : number 
+    CourseSection : string
     Substitution  : {
-        Mode           : "pending" | "done" | "notNeeded",
-        IsPostponedEntryOrEarlyExit : boolean | undefined,
-        TeacherName    : string | undefined,
+        Mode           : "pending" | "done" | "notNeeded"
+        IsPostponedEntryOrEarlyExit : boolean | undefined
+        TeacherName    : string | undefined
         TeacherSurname : string | undefined
-    },
+    }
     Teacher       : {
-        Name      : string,
+        Name      : string
         Surname   : string
-    },
+    }
     PossibleSostitutions : Array<{
-        TeacherID : number, 
-        Name      : string,
-        Surname   : string, 
-        SubstitutionDone  : number, 
+        TeacherID : number 
+        Name      : string
+        Surname   : string 
+        SubstitutionDone  : number 
         Courses   : [{ CourseYear : number, CourseSection : string } ]
     }>
-  }
+}
   
-  export type {
+interface CourseHoursResponse {
+	CourseSection : string
+	CourseYear    : number
+	Day           : 1 | 2 | 3 | 4 | 5
+	Hour          : number
+
+}
+
+export type {
     AbsenceCardProps,
     Teacher,
     Absence,
@@ -105,8 +98,6 @@ enum Week {
     Course,
     Subject,
     Teaching,
-    DBRequest,
-    GUser
-  };
-  export { Week };
+    DBRequest
+};
   
